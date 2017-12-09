@@ -2,7 +2,9 @@
 import datetime
 import random
 
+
 class Person :
+
     def __init__(self,name="",birthday=datetime.datetime(1970,1,1)):
         self.name = name
         self.birthday = birthday
@@ -41,6 +43,21 @@ class Student(Person):
         self.last_seat = []
         self.now_seat = 0
         self.prefer_seat = 0
+
+    def add_close(self,student_name):
+        self.close_to.extend(student_name)
+
+    def add_against(self,student_name):
+        self.against_to.extend(student_name)
+
+    # add story to student
+    # record big thing in a student'life
+    def add_story(self, date, story):
+        return
+
+    # this function will record this seat before make new seat
+    def record_seat(self ,seat_num = 0):
+        return
 
     def get_prefer_seat(self):
         return self.prefer_seat
@@ -136,6 +153,10 @@ class ClassObject():
             self.seats_column = num
         else:
             return False
+
+    #this function will help seat_list from dict to list, order by score, record seat num;
+    def trans_to_list(self):
+        return
 
     def get_seats_column(self):
         if  self.seats_column == 0:
