@@ -1,10 +1,12 @@
 from student import TheClass
+from student import ClassObject
+
 
 
 class ClassMachine:
 
-    def __init__(self, class_name, class_object):
-        self.the_class = class_name
+    def __init__(self, class_name=" ", class_object = ClassObject()):
+        self.the_class = TheClass(class_name)
         self.class_object = class_object
 
     def analyse_seat(self):
@@ -20,4 +22,10 @@ class ClassMachine:
     def set_seat(self):
         if  self.the_class.members > self.class_object.seats_number:
             return False
+
+    ##this function will init a class
+    def init_class_Object(self):
+
+
+
 

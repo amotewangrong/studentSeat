@@ -106,6 +106,31 @@ class ClassObject():
         self.shape_list=[]
         self.seats_column = 0
 
+    def auto_init(self, auto_grade = False):
+        seats_number = input("how many seats in this class (*) : ")
+        column = input("how many columns in this class(if you have specific plan, left this option) : ")
+        shape_list_str = input("specific every row's desktop number (may overwrite last parameter) : ")
+        shape_list_org=[]
+        wrong_flag = 0
+        if len(shape_list_str) == 0:
+            shape_list_org = []
+        else:
+            for i in shape_list_str.split(" "):
+                shape_list_org.append(int(i))
+        try:
+            self.seats_number = int(seats_number)
+        except:
+            self.seats_number = int(input("please input seat number again : "))
+        try:
+            self.seats_column = int(column)
+        except:
+            wrong_flag += 1
+        self.set_seat_shape(shape_list_org)
+        if len(shape_list_org) == 0 and wrong_flag == 1:
+            print("you input too little parameter and this will work as 6 column")
+        if auto_grade :
+            self.auto_set_seat_judge()
+
     def set_seats_column(self,num):
         if 0< num < self.seats_number:
             self.seats_column = num
@@ -220,10 +245,13 @@ if __name__ == "__main__":
     a = Student("苏佳妮")
     a.set_birthday(2004, 4, 3)
     a.describe()
+#    b = ClassObject()
+#    b.add_seats(28)
+#    b.get_seats_column()
+#    b.set_seat_shape()
+#    print(b.shape_list)
+#    b.auto_set_seat_judge()
+#    b.print_seats()
     b = ClassObject()
-    b.add_seats(28)
-    b.get_seats_column()
-    b.set_seat_shape()
-    print(b.shape_list)
-    b.auto_set_seat_judge()
+    b.auto_init(True)
     b.print_seats()
